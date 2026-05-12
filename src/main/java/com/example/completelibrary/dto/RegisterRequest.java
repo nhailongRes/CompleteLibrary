@@ -1,0 +1,25 @@
+package com.example.completelibrary.dto;
+
+import com.example.completelibrary.repository.UserLibRepo;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+@Data
+@RequiredArgsConstructor
+public class RegisterRequest {
+    private UserLibRepo repo;
+    @NotNull(message = "Username cannot be null")
+    @Size(min = 3, message = "Username must be more than 3 characters")
+    @Pattern(regexp = "^\\S+$", message = "Username cannot contain spaces")
+    private String userName;
+    @NotNull(message = "Password cannot be null")
+    @Pattern(
+            regexp = "^(?=.*[0-9])(?=.*[A-Z]).{6,}$",
+            message = "Password must be at least 6 characters long and contain at least one number and one uppercase letter"
+    )
+    private String password;
+
+}
