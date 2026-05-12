@@ -32,3 +32,6 @@ build/
 ### VS Code ###
 .vscode/
 application.properties
+AWSCLIV2.pkg
+*.rdp
+*.pkg
